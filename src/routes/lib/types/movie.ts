@@ -1,10 +1,5 @@
-export type TypeMovie = {
-	adult: boolean;
-	backdrop_path: string;
-	genre_ids: number[];
+export type TypeListMovie = {
 	id: number;
-	original_language: string;
-	original_title: string;
 	overview: string;
 	popularity: number;
 	poster_path: string;
@@ -15,11 +10,23 @@ export type TypeMovie = {
 	vote_count: number;
 };
 
+export type TypeBannerMovie = {
+	backdrop_path: string;
+	id: number;
+	overview: string;
+	popularity: number;
+	release_date: string;
+	runtime: number;
+	title: string;
+	vote_average: number;
+	vote_count: number;
+};
+
 export type TypeContentFromMovie = {
 	list_movie_popular?: {
-		data: TypeMovie[];
+		data: TypeListMovie[];
 	};
 	first_movie_popular?: {
-		data: TypeMovie[];
+		data: TypeBannerMovie[];
 	};
 };

@@ -12,7 +12,7 @@ body {
 	color: #000000;
 }
 .icon-menu-active {
-	color: #e63900;
+	color: #fc6830;
 }
 
 /* dark */
@@ -30,6 +30,6 @@ body {
 		color: #fff;
 	}
 	.icon-menu-active {
-		color: #e63900;
+		color: #fc6830;
 	}
 }

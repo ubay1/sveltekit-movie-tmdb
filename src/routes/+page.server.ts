@@ -1,9 +1,10 @@
-import type { TypeMovie } from 'lib/types/movie';
+import { SECRET_URL_DEV } from '$env/static/private';
+import type { TypeListMovie } from 'lib/types/movie';
 import type { PageServerLoad } from './$types';
 
 async function GetListMoviePopular() {
 	try {
-		const moviePopularFirst = await fetch('http://localhost:3000/list_movie_popular', {
+		const moviePopularFirst = await fetch(`${SECRET_URL_DEV}/list_movie_popular`, {
 			method: 'GET'
 		});
 
@@ -12,9 +13,9 @@ async function GetListMoviePopular() {
 		throw new Error('error get api movie');
 	}
 }
-async function GetFirstMoviePopular() {
+async function GetFirstMoviePopular(id: number) {
 	try {
-		const moviePopularFirst = await fetch('http://localhost:3000/movie_popular/first', {
+		const moviePopularFirst = await fetch(`${SECRET_URL_DEV}/movie_popular/first?id=${id}`, {
 			method: 'GET'
 		});
 
@@ -24,12 +25,20 @@ async function GetFirstMoviePopular() {
 	}
 }
 export const load: PageServerLoad = async () => {
-	const tempListMoviePopular: TypeMovie[] = [];
-	const tempFirstMoviePopular: TypeMovie[] = [];
-	await Promise.all([GetListMoviePopular(), GetFirstMoviePopular()]).then((values) => {
-		tempListMoviePopular.push(values[0]);
-		tempFirstMoviePopular.push(values[1]);
-	});
+	const tempListMoviePopular: TypeListMovie[] = [];
+	const tempFirstMoviePopular: TypeListMovie[] = [];
+
+	try {
+		const moviePopular = await GetListMoviePopular();
+		tempListMoviePopular.push(moviePopular);
+		if (moviePopular) {
+			const firstMoviePopular = await GetFirstMoviePopular(moviePopular.data[0].id);
+			tempFirstMoviePopular.push(firstMoviePopular);
+		}
+	} catch (error) {
+		console.log(error);
+		throw new Error('error get api');
+	}
 
 	return {
 		list_movie_popular: tempListMoviePopular[0],

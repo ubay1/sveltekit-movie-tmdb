@@ -3,8 +3,6 @@
 	import type { TypeContentFromMovie } from 'lib/types/movie';
 
 	export let data: TypeContentFromMovie;
-
-	console.log(data.first_movie_popular?.data);
 </script>
 
 <Banner content={data.first_movie_popular?.data} />

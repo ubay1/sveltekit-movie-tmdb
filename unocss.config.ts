@@ -44,7 +44,7 @@ export default defineConfig({
 	],
 	theme: {
 		colors: {
-			primary: '#e63900'
+			primary: '#fc6830'
 		}
 	}
 });
