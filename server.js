@@ -10,9 +10,9 @@ const app = express();
 let cache = apicache.middleware;
 
 app.get('/movie_popular/first', cache('1 day'), async (req, res) => {
-	const params = `api_key=${process.env.VITE_API_KEY}&language=en-US&page=1`;
+	const params = `api_key=${process.env.VITE_API_KEY_V3}&language=en-US&page=1`;
 	try {
-		const response = await fetch(`${process.env.VITE_URL_API}/movie/popular?${params}`, {
+		const response = await fetch(`${process.env.VITE_API_URL}/movie/popular?${params}`, {
 			method: 'GET'
 		});
 
@@ -25,9 +25,9 @@ app.get('/movie_popular/first', cache('1 day'), async (req, res) => {
 });
 
 app.get('/list_movie_popular', cache('1 day'), async (req, res) => {
-	const params = `api_key=${process.env.VITE_API_KEY}&language=en-US&page=1`;
+	const params = `api_key=${process.env.VITE_API_KEY_V3}&language=en-US&page=1`;
 	try {
-		const response = await fetch(`${process.env.VITE_URL_API}/movie/popular?${params}`, {
+		const response = await fetch(`${process.env.VITE_API_URL}/movie/popular?${params}`, {
 			method: 'GET'
 		});
 

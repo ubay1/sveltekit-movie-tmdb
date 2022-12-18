@@ -1,3 +1,4 @@
+import type { TypeMovie } from 'lib/types/movie';
 import type { PageServerLoad } from './$types';
 
 async function GetListMoviePopular() {
@@ -23,8 +24,8 @@ async function GetFirstMoviePopular() {
 	}
 }
 export const load: PageServerLoad = async () => {
-	const tempListMoviePopular: string[] = [];
-	const tempFirstMoviePopular: string[] = [];
+	const tempListMoviePopular: TypeMovie[] = [];
+	const tempFirstMoviePopular: TypeMovie[] = [];
 	await Promise.all([GetListMoviePopular(), GetFirstMoviePopular()]).then((values) => {
 		tempListMoviePopular.push(values[0]);
 		tempFirstMoviePopular.push(values[1]);
