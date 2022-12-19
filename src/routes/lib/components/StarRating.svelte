@@ -5,7 +5,7 @@
 	$: compRating = Math.round(maxRating - Math.round(rating * 10));
 </script>
 
-<div class="relative aspect-11/2 w-25">
+<div class="relative aspect-11/2 {$$props.class}">
 	<img src="/stars.webp" aria-hidden={true} class="absolute inset-0 w-full" alt="" />
 	<img
 		src="/stars-filled.webp"
