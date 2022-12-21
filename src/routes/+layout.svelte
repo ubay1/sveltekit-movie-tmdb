@@ -1,8 +1,8 @@
 <script lang="ts">
 	import 'uno.css';
-	import 'lib/assets/css/global.css';
-	import Seo from 'lib/components/Seo.svelte';
-	import Sidebar from 'lib/components/Sidebar.svelte';
+	import './lib/assets/css/global.css';
+	import Seo from './lib/components/Seo.svelte';
+	import Sidebar from './lib/components/Sidebar.svelte';
 </script>
 
 <Seo />

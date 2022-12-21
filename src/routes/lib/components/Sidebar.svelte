@@ -36,7 +36,7 @@
 <div
 	class="sidebar fixed w-[6%] z-10 top-0 left-0 h-full flex flex-col justify-center items-center"
 >
-	{#each listMenu as menu, index}
+	{#each listMenu as menu}
 		<a href={menu.link} class="decoration-none text-white p-3">
 			<p
 				class="icon-menu text-3xl {menu.link === $page.url.pathname

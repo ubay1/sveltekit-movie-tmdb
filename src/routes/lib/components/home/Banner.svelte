@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { PUBLIC_IMAGE_URL } from '$env/static/public';
-	import { getFirstMoviePopular } from 'lib/apis/movie';
-	import { FormatNumber, toHoursAndMinutes } from 'lib/helpers/format';
-	import type { TypeBannerMovie } from 'lib/types/movie';
+	import { getFirstMoviePopular } from '../../apis/movie';
+	import { FormatNumber, toHoursAndMinutes } from '../../helpers/format';
+	import type { TypeBannerMovie } from '../../types/movie';
 	import StarRating from '../StarRating.svelte';
 	import LoadingBanner from './LoadingBanner.svelte';
 
@@ -23,11 +22,11 @@
 			<LoadingBanner />
 		</div>
 	{:else}
-		{#each content as item, index}
+		{#each content as item}
 			<div class="relative bg-black aspect-ratio-1/1 md:aspect-ratio-3/2 lg:aspect-ratio-25/9">
 				<div class="absolute top-0 right-0 lt-lg:left-0 lg:bottom-0 lg:left-1/3 bg-gray-9">
 					<img
-						src={`${PUBLIC_IMAGE_URL}/w780/${item.backdrop_path}`}
+						src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}/w780/${item.backdrop_path}`}
 						alt="img-banner"
 						width="400"
 						height="250"

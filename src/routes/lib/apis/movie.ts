@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { swr } from '@svelte-drama/swr';
 import { suspend, refreshOnFocus, refreshOnReconnect } from '@svelte-drama/swr/plugin';
-import type { TypeBannerMovie, TypeListMovie } from 'lib/types/movie';
+import type { TypeBannerMovie, TypeListMovie } from '../types/movie';
 // import { PUBLIC_IMAGE_URL } from '$env/static/public';
 
 const params = `api_key=${import.meta.env.VITE_SECRET_API_KEY_V3}&language=en-US`;

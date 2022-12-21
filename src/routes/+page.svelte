@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { Suspense } from '@svelte-drama/suspense';
-	import { getListMoviePopular } from 'lib/apis/movie';
-	import Banner from 'lib/components/home/Banner.svelte';
-	import LoadingListMovie from 'lib/components/home/LoadingListMovie.svelte';
-	import PopularMovies from 'lib/components/home/PopularMovies.svelte';
-	import PopularTv from 'lib/components/home/PopularTv.svelte';
-	import type { TypeContentFromMovie } from 'lib/types/movie';
+	import Banner from './lib/components/home/Banner.svelte';
+	import PopularMovies from './lib/components/home/PopularMovies.svelte';
+	import PopularTv from './lib/components/home/PopularTv.svelte';
 </script>
 
 <Suspense>

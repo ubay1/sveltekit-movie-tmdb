@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { TypeListTv } from 'lib/types/movie';
-	import { PUBLIC_IMAGE_URL } from '$env/static/public';
+	import type { TypeListTv } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
 	import StarRating from '../StarRating.svelte';
-	import { getListTvPopular } from 'lib/apis/movie';
+	import { getListTvPopular } from '../../apis/movie';
 	import LoadingListMovie from './LoadingListMovie.svelte';
 
 	export let content: TypeListTv[] | any = [];
@@ -23,11 +22,11 @@
 			<LoadingListMovie />
 		{:else}
 			<div class="flex gap-4 overflow-x-auto pb-6">
-				{#each content as item, index}
+				{#each content as item}
 					<div class="flex flex-col">
 						<div class="w-230px h-370px bg-gray-9 p-1 rounded-md">
 							<ImageLoader
-								src={`${PUBLIC_IMAGE_URL}/w342/${item.poster_path}`}
+								src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}/w342/${item.poster_path}`}
 								alt="poster-{item.id}"
 								classes="object-cover rounded-md"
 							/>

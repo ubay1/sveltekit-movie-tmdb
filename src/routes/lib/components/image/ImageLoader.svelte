@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import IntersectionImage from './IntersectionImage.svelte';
 	import Image from './Image.svelte';
 
