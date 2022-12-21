@@ -34,7 +34,7 @@
 </script>
 
 <div
-	class="sidebar fixed w-[6%] z-10 top-0 left-0 h-full flex flex-col justify-center items-center"
+	class="sidebar fixed w-[6%] z-10 top-0 left-0 h-full flex flex-col justify-center items-center lt-lg:hidden"
 >
 	{#each listMenu as menu}
 		<a href={menu.link} class="decoration-none text-white p-3">

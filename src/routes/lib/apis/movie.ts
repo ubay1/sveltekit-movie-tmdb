@@ -17,6 +17,7 @@ export function getFirstMoviePopular(id: number) {
 				data: [
 					{
 						backdrop_path: movie.backdrop_path,
+						poster_path: movie.poster_path,
 						id: movie.id,
 						overview: movie.overview,
 						popularity: movie.popularity,

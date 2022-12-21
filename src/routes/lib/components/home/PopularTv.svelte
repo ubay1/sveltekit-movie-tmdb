@@ -15,7 +15,7 @@
 	}, 1000);
 </script>
 
-<div class="px-10 mt-6 mb-10">
+<div class="px-10 mt-6 mb-10 lt-md:px-6">
 	<div class="text-white text-2xl mb-4">Popular TV</div>
 	<div class="flex gap-4 overflow-x-auto pb-6">
 		{#if isLoading}
@@ -24,7 +24,7 @@
 			<div class="flex gap-4 overflow-x-auto pb-6">
 				{#each content as item}
 					<div class="flex flex-col">
-						<div class="w-230px h-370px bg-gray-9 p-1 rounded-md">
+						<div class="w-230px h-370px bg-gray-9 p-1 rounded-md lt-md:w-200px lt-md:h-300px">
 							<ImageLoader
 								src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}/w342/${item.poster_path}`}
 								alt="poster-{item.id}"

@@ -1,5 +1,6 @@
 export type TypeBannerMovie = {
 	backdrop_path: string;
+	poster_path?: string;
 	id: number;
 	overview: string;
 	popularity: number;

@@ -6,9 +6,9 @@
 </script>
 
 <Seo />
-<main class="grid grid-cols-[6%_94%] h-full">
+<main class="lg:grid lg:grid-cols-[6%_94%] h-full">
 	<Sidebar />
-	<div class="grid-area-[1/2]">
+	<div class="lg:grid-area-[1/2]">
 		<slot />
 	</div>
 </main>
