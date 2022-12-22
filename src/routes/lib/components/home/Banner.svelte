@@ -19,8 +19,10 @@
 
 <div class="w-full bg-gray-8">
 	{#if isLoading}
-		<div class="flex justify-center items-center">
-			<LoadingBanner />
+		<div class="gap-4 overflow-x-auto">
+			<div class="h-400px flex justify-center items-center relative">
+				<div class="shimmer-image" />
+			</div>
 		</div>
 	{:else}
 		{#each content as item}
