@@ -1,17 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { swr } from '@svelte-drama/swr';
 import { suspend, refreshOnFocus, refreshOnReconnect } from '@svelte-drama/swr/plugin';
-import type { TypeBannerMovie, TypeListMovie } from '../types/movie';
+import type {
+	TypeDetailMovie,
+	TypeBannerRecommendations,
+	TypeListMovie,
+	TypeDetailTv
+} from '../types/movie';
 // import { PUBLIC_IMAGE_URL } from '$env/static/public';
 
-const params = `api_key=${import.meta.env.VITE_SECRET_API_KEY_V3}&language=en-US`;
+const params = `api_key=${
+	import.meta.env.VITE_SECRET_API_KEY_V3
+}&language=en-US&append_to_response=videos,images,external_ids,release_dates&include_image_language=en`;
 
-export function getFirstMoviePopular(id: number) {
+export function getDetailMovie(id: number) {
 	const url = `${import.meta.env.VITE_SECRET_API_URL}/movie/${id}?${params}`;
 	const { data } = swr(url, {
 		async fetcher(url) {
-			const movie: TypeBannerMovie = await fetch(url).then((r) => r.json());
-			console.log('movie first =  ', movie);
+			const movie: TypeDetailMovie = await fetch(url).then((r) => r.json());
+			// console.log('movie first =  ', movie);
 
 			return {
 				data: [
@@ -23,6 +30,66 @@ export function getFirstMoviePopular(id: number) {
 						popularity: movie.popularity,
 						release_date: movie.release_date,
 						runtime: movie.runtime,
+						title: movie.title,
+						vote_average: movie.vote_average,
+						vote_count: movie.vote_count
+					}
+				]
+			};
+		},
+		plugins: [suspend(), refreshOnFocus(), refreshOnReconnect()]
+	});
+	return data;
+}
+
+export function getDetailTv(id: number) {
+	const url = `${import.meta.env.VITE_SECRET_API_URL}/tv/${id}?${params}`;
+	const { data } = swr(url, {
+		async fetcher(url) {
+			const movie: TypeDetailTv = await fetch(url).then((r) => r.json());
+			console.log('tv detail =  ', movie);
+
+			return {
+				data: [
+					{
+						backdrop_path: movie.backdrop_path,
+						poster_path: movie.poster_path,
+						id: movie.id,
+						overview: movie.overview,
+						popularity: movie.popularity,
+						release_date: movie.release_date,
+						runtime: movie.episode_run_time,
+						title: movie.name,
+						vote_average: movie.vote_average,
+						vote_count: movie.vote_count,
+						list_images_backdrop: movie.list_images_backdrop,
+						list_images_poster: movie.list_images_poster,
+						list_videos: movie.list_videos
+					}
+				]
+			};
+		},
+		plugins: [suspend(), refreshOnFocus(), refreshOnReconnect()]
+	});
+	return data;
+}
+
+export function getMovieTvRecommendations(id: number) {
+	const url = `${import.meta.env.VITE_SECRET_API_URL}/recommendations/${id}?${params}`;
+	const { data } = swr(url, {
+		async fetcher(url) {
+			const movie: TypeBannerRecommendations = await fetch(url).then((r) => r.json());
+			console.log('movie first =  ', movie);
+
+			return {
+				data: [
+					{
+						backdrop_path: movie.backdrop_path,
+						poster_path: movie.poster_path,
+						id: movie.id,
+						overview: movie.overview,
+						popularity: movie.popularity,
+						release_date: movie.release_date,
 						title: movie.title,
 						vote_average: movie.vote_average,
 						vote_count: movie.vote_count

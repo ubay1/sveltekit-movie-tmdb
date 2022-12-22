@@ -12,12 +12,11 @@ import {
 } from 'unocss';
 
 export default defineConfig({
-	shortcuts: [
-		[
-			'form-input',
-			'bg-gray-2 font-standar px-3 rounded-md h-10 w-fill text-sm border-none focus:outline-stone-3'
-		]
-	],
+	shortcuts: {
+		'form-input':
+			'bg-gray-2 font-standar px-3 rounded-md h-10 w-fill text-sm border-none focus:outline-stone-3',
+		btn: 'bg-transparent border-none p-4 text-white'
+	},
 	presets: [
 		presetUno(),
 		presetWind(),

@@ -5,7 +5,7 @@
 	import { getListMoviePopular } from '../../apis/movie';
 	import { onMount } from 'svelte';
 	import LoadingListMovie from './LoadingListMovie.svelte';
-	import Banner from './Banner.svelte';
+	import BannerHome from './BannerHome.svelte';
 	import LoadingBanner from './LoadingBanner.svelte';
 
 	export let content: TypeListMovie[] | any = [];
@@ -24,7 +24,7 @@
 </script>
 
 {#if compIdFirstMovie !== 0}
-	<Banner idMovie={compIdFirstMovie} />
+	<BannerHome idMovie={compIdFirstMovie} />
 {:else}
 	<div class="w-full bg-gray-8">
 		<div class="flex justify-center items-center">
