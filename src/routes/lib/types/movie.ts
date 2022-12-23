@@ -9,6 +9,51 @@ export type TypeDetailMovie = {
 	title: string;
 	vote_average: number;
 	vote_count: number;
+	budget: number;
+	revenue: number;
+	genres: [
+		{
+			id: number;
+			name: string;
+		}
+	];
+	spoken_languages: string[];
+	status: string;
+	production_companies: string[];
+	credits: {
+		cast: TypeCast[];
+		crew: TypeCrew[];
+	};
+	images: string[];
+	videos: string[];
+};
+
+type TypeCast = {
+	adult: boolean;
+	cast_id: number;
+	character: string;
+	credit_id: string;
+	gender: number;
+	id: number;
+	known_for_department: string;
+	name: string;
+	order: number;
+	original_name: string;
+	popularity: number;
+	profile_path: string;
+};
+type TypeCrew = {
+	adult: boolean;
+	credit_id: string;
+	department: string;
+	gender: number;
+	id: number;
+	job: string;
+	known_for_department: string;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: string;
 };
 
 export type TypeDetailTv = {
@@ -22,9 +67,18 @@ export type TypeDetailTv = {
 	name: string;
 	vote_average: number;
 	vote_count: number;
-	list_images_backdrop: string[];
-	list_images_poster: string[];
-	list_videos: string[];
+	budget: number;
+	revenue: number;
+	genres: string[];
+	spoken_languages: string[];
+	status: string;
+	production_companies: string[];
+	credits: {
+		cast: TypeCast[];
+		crew: TypeCrew[];
+	};
+	images: string[];
+	videos: string[];
 };
 
 export type TypeBannerRecommendations = {

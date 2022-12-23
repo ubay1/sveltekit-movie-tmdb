@@ -1,5 +1,9 @@
-export const FormatNumber = (value: number): number => {
-	return Number(new Intl.NumberFormat('id-ID').format(value));
+export const formatNumber = (value: number): number | string => {
+	return new Intl.NumberFormat('en-GB').format(value);
+};
+
+export const formatDate = (value: Date): string => {
+	return new Intl.DateTimeFormat('en-GB', { dateStyle: 'long' }).format(value);
 };
 
 export const toHoursAndMinutes = (totalMinutes: number) => {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getDetailMovie } from '../../apis/movie';
-	import { FormatNumber, toHoursAndMinutes } from '../../helpers/format';
+	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { TypeDetailMovie } from '../../types/movie';
 	import StarRating from '../StarRating.svelte';
 	import LoadingBanner from './LoadingBanner.svelte';
@@ -50,13 +50,13 @@
 									<StarRating rating={item.vote_average} class="w-25" />
 									<div class="text-gray-5">{item.vote_average.toFixed(1)}</div>
 								</div>
-								<div class="text-gray-5 flex gap-3">
-									<div>{FormatNumber(item.vote_count)} Reviews</div>
+								<div class="text-gray-5 font-light flex gap-3">
+									<div>{formatNumber(item.vote_count)} Reviews</div>
 									<div>{new Date(item.release_date).getFullYear()}</div>
 									<div>{toHoursAndMinutes(item.runtime)}</div>
 								</div>
 							</div>
-							<div class="leading-6 pr-4 text-gray-3 lt-md:line-clamp-3">
+							<div class="leading-6 pr-4 font-light text-gray-3 lt-md:line-clamp-3">
 								{item.overview}
 							</div>
 						</div>

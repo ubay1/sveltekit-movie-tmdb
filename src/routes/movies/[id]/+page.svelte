@@ -1,11 +1,11 @@
 <script>
 	import { page } from '$app/stores';
 	import { Suspense } from '@svelte-drama/suspense';
-	import BannerDetail from 'lib/components/detail/BannerDetail.svelte';
+	import Detail from 'lib/components/detail/Detail.svelte';
 </script>
 
 <Suspense>
-	<BannerDetail id={Number($page.params.id)} />
+	<Detail id={Number($page.params.id)} />
 </Suspense>
 
 <style></style>

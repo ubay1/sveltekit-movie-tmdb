@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getDetailMovie } from '../../apis/movie';
-	import { FormatNumber, toHoursAndMinutes } from '../../helpers/format';
+	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { TypeDetailMovie } from '../../types/movie';
 	import StarRating from '../StarRating.svelte';
 	import Overview from './Overview.svelte';
@@ -21,6 +21,7 @@
 	setTimeout(() => {
 		isLoading = false;
 		content = $movie?.data;
+		console.log(content);
 	}, 1000);
 </script>
 
@@ -56,13 +57,13 @@
 								<StarRating rating={item.vote_average} class="w-25" />
 								<div class="text-gray-5">{item.vote_average.toFixed(1)}</div>
 							</div>
-							<div class="text-gray-5 flex gap-3">
-								<div>{FormatNumber(item.vote_count)} Reviews</div>
+							<div class="text-gray-5 font-light flex gap-3">
+								<div>{formatNumber(item.vote_count)} Reviews</div>
 								<div>{new Date(item.release_date).getFullYear()}</div>
 								<div>{toHoursAndMinutes(item.runtime)}</div>
 							</div>
 						</div>
-						<div class="leading-6 pr-4 text-gray-3 lt-md:line-clamp-3">
+						<div class="leading-6 pr-4 font-light text-gray-3 lt-md:line-clamp-3">
 							{item.overview}
 						</div>
 
@@ -79,13 +80,18 @@
 	{/if}
 </div>
 
-<div class="flex justify-center gap-10 mt-10">
+<div class="flex justify-center gap-10 mt-10 lt-lg:mt-0 lt-lg:grid lt-lg:grid-cols-3 lt-lg:gap-0">
 	{#each listTabDetail as tab}
 		<button
-			class="btn text-xl px-0 py-1 font-bold {activeTab === tab.tab
-				? 'border-b border-white'
-				: 'text-gray-7'}">{tab.label}</button
+			on:click={() => (activeTab = tab.tab)}
+			class="btn text-xl px-0 py-1 font-bold cursor-pointer lt-lg:p-4 lt-lg:text-sm lt-lg:font-light 
+			{activeTab === tab.tab
+				? 'border-b border-white font-semibold lt-lg:bg-gray-8 lt-lg:border-none'
+				: 'text-gray-7 font-light lt-lg:bg-gray-9'}
+			"
 		>
+			{tab.label}
+		</button>
 	{/each}
 </div>
-<Overview />
+<Overview {isLoading} {content} />

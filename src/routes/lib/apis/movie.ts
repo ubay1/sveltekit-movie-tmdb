@@ -11,14 +11,14 @@ import type {
 
 const params = `api_key=${
 	import.meta.env.VITE_SECRET_API_KEY_V3
-}&language=en-US&append_to_response=videos,images,external_ids,release_dates&include_image_language=en`;
+}&language=en-US&append_to_response=videos,images,credits,external_ids,release_dates&include_image_language=en`;
 
 export function getDetailMovie(id: number) {
 	const url = `${import.meta.env.VITE_SECRET_API_URL}/movie/${id}?${params}`;
 	const { data } = swr(url, {
 		async fetcher(url) {
 			const movie: TypeDetailMovie = await fetch(url).then((r) => r.json());
-			// console.log('movie first =  ', movie);
+			console.log('movie detail =  ', movie);
 
 			return {
 				data: [
@@ -32,7 +32,16 @@ export function getDetailMovie(id: number) {
 						runtime: movie.runtime,
 						title: movie.title,
 						vote_average: movie.vote_average,
-						vote_count: movie.vote_count
+						vote_count: movie.vote_count,
+						budget: movie.budget,
+						revenue: movie.revenue,
+						genres: movie.genres,
+						spoken_languages: movie.spoken_languages,
+						status: movie.status,
+						production_companies: movie.production_companies,
+						credits: movie.credits,
+						images: movie.images,
+						videos: movie.videos
 					}
 				]
 			};
@@ -62,9 +71,8 @@ export function getDetailTv(id: number) {
 						title: movie.name,
 						vote_average: movie.vote_average,
 						vote_count: movie.vote_count,
-						list_images_backdrop: movie.list_images_backdrop,
-						list_images_poster: movie.list_images_poster,
-						list_videos: movie.list_videos
+						images: movie.images,
+						videos: movie.videos
 					}
 				]
 			};
