@@ -65,3 +65,18 @@ body {
 	z-index: 1;
 	animation: shimmer 1s infinite;
 }
+
+#nprogress .bar {
+	background: #fc6830 !important;
+	height: 4px !important;
+}
+
+#nprogress .peg {
+	box-shadow: 0 0 10px #fc6830, 0 0 5px #fc6830;
+}
+
+#nprogress > .spinner .spinner-icon {
+	/* border-top-color: #ffbb00;
+	border-left-color: #ffbb00; */
+	display: none;
+}

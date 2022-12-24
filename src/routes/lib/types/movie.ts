@@ -1,4 +1,32 @@
-export type TypeDetailMovie = {
+interface ICast {
+	adult: boolean;
+	cast_id: number;
+	character: string;
+	credit_id: string;
+	gender: number;
+	id: number;
+	known_for_department: string;
+	name: string;
+	order: number;
+	original_name: string;
+	popularity: number;
+	profile_path: string;
+}
+interface ICrew {
+	adult: boolean;
+	credit_id: string;
+	department: string;
+	gender: number;
+	id: number;
+	job: string;
+	known_for_department: string;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: string;
+}
+
+export interface IDetailMovie {
 	backdrop_path: string;
 	poster_path?: string;
 	id: number;
@@ -21,67 +49,44 @@ export type TypeDetailMovie = {
 	status: string;
 	production_companies: string[];
 	credits: {
-		cast: TypeCast[];
-		crew: TypeCrew[];
+		cast: ICast[];
+		crew: ICrew[];
 	};
 	images: string[];
 	videos: string[];
-};
+}
 
-type TypeCast = {
-	adult: boolean;
-	cast_id: number;
-	character: string;
-	credit_id: string;
-	gender: number;
-	id: number;
-	known_for_department: string;
-	name: string;
-	order: number;
-	original_name: string;
-	popularity: number;
-	profile_path: string;
-};
-type TypeCrew = {
-	adult: boolean;
-	credit_id: string;
-	department: string;
-	gender: number;
-	id: number;
-	job: string;
-	known_for_department: string;
-	name: string;
-	original_name: string;
-	popularity: number;
-	profile_path: string;
-};
-
-export type TypeDetailTv = {
+export interface IDetailTv {
 	backdrop_path: string;
-	poster_path?: string;
+	credits: {
+		cast: ICast[];
+		crew: ICrew[];
+	};
+	episode_run_time: number[];
+	first_air_date: string;
+	genres: [
+		{
+			id: number;
+			name: string;
+		}
+	];
 	id: number;
+	images: string[];
+	name: string;
+	poster_path?: string;
 	overview: string;
 	popularity: number;
-	release_date: string;
-	episode_run_time: number[];
-	name: string;
 	vote_average: number;
 	vote_count: number;
 	budget: number;
 	revenue: number;
-	genres: string[];
 	spoken_languages: string[];
 	status: string;
 	production_companies: string[];
-	credits: {
-		cast: TypeCast[];
-		crew: TypeCrew[];
-	};
-	images: string[];
 	videos: string[];
-};
+}
 
-export type TypeBannerRecommendations = {
+export interface IBannerRecommendations {
 	adult: boolean;
 	backdrop_path: string;
 	id: number;
@@ -97,9 +102,9 @@ export type TypeBannerRecommendations = {
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
-};
+}
 
-export type TypeListMovie = {
+export interface IListMovie {
 	id: number;
 	overview: string;
 	popularity: number;
@@ -109,9 +114,9 @@ export type TypeListMovie = {
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
-};
+}
 
-export type TypeListTv = {
+export interface IListTv {
 	id: number;
 	overview: string;
 	popularity: number;
@@ -120,16 +125,16 @@ export type TypeListTv = {
 	name: string;
 	vote_average: number;
 	vote_count: number;
-};
+}
 
-export type TypeContentFromMovie = {
+export interface IContentFromMovie {
 	first_movie_popular?: {
-		data: TypeDetailMovie[];
+		data: IDetailMovie[];
 	};
 	list_movie_popular?: {
-		data: TypeListMovie[];
+		data: IListMovie[];
 	};
 	list_tv_popular?: {
-		data: TypeListTv[];
+		data: IListTv[];
 	};
-};
+}

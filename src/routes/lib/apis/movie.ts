@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { swr } from '@svelte-drama/swr';
 import { suspend, refreshOnFocus, refreshOnReconnect } from '@svelte-drama/swr/plugin';
-import type {
-	TypeDetailMovie,
-	TypeBannerRecommendations,
-	TypeListMovie,
-	TypeDetailTv
-} from '../types/movie';
+import type { IDetailMovie, IBannerRecommendations, IListMovie, IDetailTv } from '../types/movie';
 // import { PUBLIC_IMAGE_URL } from '$env/static/public';
 
 const params = `api_key=${
@@ -17,7 +12,7 @@ export function getDetailMovie(id: number) {
 	const url = `${import.meta.env.VITE_SECRET_API_URL}/movie/${id}?${params}`;
 	const { data } = swr(url, {
 		async fetcher(url) {
-			const movie: TypeDetailMovie = await fetch(url).then((r) => r.json());
+			const movie: IDetailMovie = await fetch(url).then((r) => r.json());
 			console.log('movie detail =  ', movie);
 
 			return {
@@ -55,24 +50,24 @@ export function getDetailTv(id: number) {
 	const url = `${import.meta.env.VITE_SECRET_API_URL}/tv/${id}?${params}`;
 	const { data } = swr(url, {
 		async fetcher(url) {
-			const movie: TypeDetailTv = await fetch(url).then((r) => r.json());
-			console.log('tv detail =  ', movie);
+			const tv: IDetailTv = await fetch(url).then((r) => r.json());
+			console.log('tv detail =  ', tv);
 
 			return {
 				data: [
 					{
-						backdrop_path: movie.backdrop_path,
-						poster_path: movie.poster_path,
-						id: movie.id,
-						overview: movie.overview,
-						popularity: movie.popularity,
-						release_date: movie.release_date,
-						runtime: movie.episode_run_time,
-						title: movie.name,
-						vote_average: movie.vote_average,
-						vote_count: movie.vote_count,
-						images: movie.images,
-						videos: movie.videos
+						backdrop_path: tv.backdrop_path,
+						poster_path: tv.poster_path,
+						id: tv.id,
+						overview: tv.overview,
+						popularity: tv.popularity,
+						first_air_date: tv.first_air_date,
+						runtime: tv.episode_run_time,
+						title: tv.name,
+						vote_average: tv.vote_average,
+						vote_count: tv.vote_count,
+						images: tv.images,
+						videos: tv.videos
 					}
 				]
 			};
@@ -86,7 +81,7 @@ export function getMovieTvRecommendations(id: number) {
 	const url = `${import.meta.env.VITE_SECRET_API_URL}/recommendations/${id}?${params}`;
 	const { data } = swr(url, {
 		async fetcher(url) {
-			const movie: TypeBannerRecommendations = await fetch(url).then((r) => r.json());
+			const movie: IBannerRecommendations = await fetch(url).then((r) => r.json());
 			console.log('movie first =  ', movie);
 
 			return {
@@ -117,7 +112,7 @@ export function getListMoviePopular() {
 		async fetcher(url) {
 			const movie: {
 				page: number;
-				results: TypeListMovie[];
+				results: IListMovie[];
 				total_pages: number;
 				total_results: number;
 			} = await fetch(url).then((r) => r.json());
@@ -139,7 +134,7 @@ export function getListTvPopular() {
 		async fetcher(url) {
 			const movie: {
 				page: number;
-				results: TypeListMovie[];
+				results: IListMovie[];
 				total_pages: number;
 				total_results: number;
 			} = await fetch(url).then((r) => r.json());
