@@ -26,6 +26,15 @@
 	// }, 1000);
 </script>
 
+<svelte:head>
+	<link
+		rel="preload"
+		as="image"
+		href="{import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/{content.backdrop_path}"
+		type="image/jpg"
+	/>
+</svelte:head>
+
 <div class="w-full bg-gray-8">
 	<div class="relative bg-[#111111] h-400px">
 		<div class="absolute top-0 right-0 lt-lg:left-0 lt-lg:top-0 lg:bottom-0 lg:left-1/3 bg-gray-9">

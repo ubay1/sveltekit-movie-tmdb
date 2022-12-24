@@ -20,6 +20,15 @@
 	// }, 1000);
 </script>
 
+<svelte:head>
+	<link
+		rel="preload"
+		as="image"
+		href="{import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/{content.backdrop_path}"
+		type="image/jpg"
+	/>
+</svelte:head>
+
 <div class="w-full bg-gray-8">
 	<div data-sveltekit-preload-code class="relative bg-[#111111] h-400px">
 		<a href="/movies/{content.id}" class="text-white">
