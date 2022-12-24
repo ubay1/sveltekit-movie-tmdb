@@ -27,7 +27,7 @@
 <style scoped>
 	img {
 		opacity: 0;
-		transition: opacity 1.5s ease-in-out;
+		transition: opacity 1s ease-in-out;
 	}
 	img.loaded {
 		opacity: 1;

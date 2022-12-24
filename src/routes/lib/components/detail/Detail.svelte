@@ -2,6 +2,7 @@
 	import { getDetailMovie } from '../../apis/movie';
 	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { IDetailMovie } from '../../types/movie';
+	import ImageLoader from '../image/ImageLoader.svelte';
 	import StarRating from '../StarRating.svelte';
 
 	// export let id: number;
@@ -28,13 +29,13 @@
 <div class="w-full bg-gray-8">
 	<div class="relative bg-[#111111] h-400px">
 		<div class="absolute top-0 right-0 lt-lg:left-0 lt-lg:top-0 lg:bottom-0 lg:left-1/3 bg-gray-9">
-			<img
-				src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/${content.backdrop_path}`}
-				alt="img-banner"
-				width="400"
-				height="250"
-				class="w-full object-cover bg-gray-9 lg:h-full lt-lg:object-top"
-			/>
+			<div class=" w-full h-400px lt-lg:h-300px">
+				<ImageLoader
+					src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/${content.backdrop_path}`}
+					alt="img-banner"
+					classes="object-cover lt-lg:object-top border-none rounded-none"
+				/>
+			</div>
 		</div>
 		<div
 			class="absolute bottom-0 top-0 left-0 px-10 flex-col justify-center from-black
