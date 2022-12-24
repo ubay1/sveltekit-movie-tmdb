@@ -26,10 +26,12 @@
 			<div
 				class="absolute top-0 right-0 lt-lg:left-0 lt-lg:top-0 lg:bottom-0 lg:left-1/3 bg-gray-9"
 			>
-				<ImageLoader
+				<img
 					src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/${content.backdrop_path}`}
 					alt="img-banner"
-					classes="w-full object-cover bg-gray-9 lg:h-full lt-lg:object-top"
+					width="400"
+					height="250"
+					class="w-full object-cover bg-gray-9 lg:h-full lt-lg:object-top"
 				/>
 			</div>
 			<div

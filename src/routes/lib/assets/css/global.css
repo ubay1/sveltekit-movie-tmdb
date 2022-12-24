@@ -7,17 +7,6 @@ body {
 	color: #fff;
 }
 
-.sidebar {
-	background-color: #000000;
-	border-right: 1px solid #3d3d3d;
-}
-.icon-menu {
-	color: #fff;
-}
-.icon-menu-active {
-	color: #fc6830;
-}
-
 /* dark */
 /* @media (prefers-color-scheme: dark) {
 	body {
