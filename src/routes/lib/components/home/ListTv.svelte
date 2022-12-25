@@ -5,6 +5,7 @@
 	import { getListTvPopular } from '../../apis/movie';
 	import LoadingListMovie from './LoadingListMovie.svelte';
 
+	export let title: string;
 	export let content: IListTv[] | any = [];
 
 	// let isLoading: boolean = true;
@@ -17,7 +18,7 @@
 </script>
 
 <div class="px-10 mt-6 mb-10 lt-md:px-6">
-	<div class="text-white text-2xl mb-4">Popular TV</div>
+	<div class="text-white text-2xl mb-4">{title}</div>
 	<div class="flex gap-4 overflow-x-auto pb-6">
 		<!-- {#if isLoading}
 			<LoadingListMovie />
@@ -37,7 +38,7 @@
 							<div class="text-base font-light line-clamp-1">{item.name}</div>
 							<div class="flex items-center gap-2">
 								<StarRating rating={item.vote_average} class="w-20" />
-								<div class="text-gray-4 font-light">{item.vote_average}</div>
+								<div class="text-gray-4 font-light text-sm">{item.vote_average}</div>
 							</div>
 						</div>
 					</a>

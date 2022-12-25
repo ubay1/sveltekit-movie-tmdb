@@ -21,7 +21,7 @@
 <div class="mt-10 mb-4">
 	<!-- {#if !isLoading} -->
 	<!-- {#each content as item} -->
-	<div class="mt-14 px-10">
+	<div class="mt-14 px-10 lt-md:px-6 lt-md:mt-4">
 		<div class="flex justify-center items-start gap-8">
 			<div class="w-200px h-300px bg-gray-8 lt-lg:hidden">
 				<img

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Suspense } from '@svelte-drama/suspense';
 	import BannerHome from 'lib/components/home/BannerHome.svelte';
+	import ListMovie from 'lib/components/home/ListMovie.svelte';
 	import type { IDetailMovie, IListMovie, IListTv } from 'lib/types/movie';
-	import PopularMovies from './lib/components/home/PopularMovies.svelte';
-	import PopularTv from './lib/components/home/PopularTv.svelte';
+	import ListTv from './lib/components/home/ListTv.svelte';
 
 	export let data: {
 		banner: IDetailMovie;
@@ -15,10 +15,10 @@
 <!-- fetching CSR -->
 <!-- <Suspense>
 	<PopularMovies />
-	<PopularTv />
+	<ListTv />
 </Suspense> -->
 
 <!-- fetching SSR -->
 <BannerHome content={data.banner} />
-<PopularMovies content={data.list_movie_popular} />
-<PopularTv content={data.list_tv_popular} />
+<ListMovie title="Popular Movies" content={data.list_movie_popular} />
+<ListTv title="Popular TV" content={data.list_tv_popular} />

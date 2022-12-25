@@ -13,7 +13,9 @@
 	<Detail id={Number($page.params.id)} />
 </Suspense> -->
 
-<Detail content={data} />
-<Overview content={data} />
+<div class="lt-lg:mb-20">
+	<Detail content={data} />
+	<Overview content={data} />
+</div>
 
 <style></style>
