@@ -13,7 +13,7 @@
 </script>
 
 <div class="lt-lg:mb-20">
-	<BannerHome content={data.banner} />
+	<BannerHome content={data.banner} type="movies" />
 	<ListMovie title="Popular Movies" content={data.list_movie_popular} />
 	<ListMovie title="Top Rated Movies" content={data.list_movie_top_rated} />
 	<ListMovie title="Upcoming Movies" content={data.list_movie_upcoming} />

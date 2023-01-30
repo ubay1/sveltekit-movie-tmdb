@@ -11,7 +11,7 @@
 </script>
 
 <div class="lt-lg:mb-20">
-	<BannerHome content={data.banner} />
+	<BannerHome content={data.banner} type="tv" />
 	<ListTv title="Popular TV" content={data.list_tv_popular} />
 	<ListTv title="Top Rated TV" content={data.list_tv_top_rated} />
 </div>

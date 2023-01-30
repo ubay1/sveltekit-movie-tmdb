@@ -11,6 +11,8 @@
 
 	export let content: IDetailMovie;
 
+	export let type: string = 'movies';
+
 	// let isLoading: boolean = true;
 
 	// $: movie = getDetailMovie(idMovie);
@@ -31,7 +33,7 @@
 
 <div class="w-full bg-gray-8">
 	<div data-sveltekit-preload-code class="relative bg-[#111111] h-400px">
-		<a href="/movies/{content.id}" class="text-white">
+		<a href="/{type}/{content.id}" class="text-white">
 			<div
 				class="absolute top-0 right-0 lt-lg:left-0 lt-lg:top-0 lg:bottom-0 lg:left-1/3 bg-gray-9"
 			>

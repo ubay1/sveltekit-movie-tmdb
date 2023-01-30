@@ -114,6 +114,8 @@ export interface IListMovie {
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
+	media_type?: string;
+	original_title?: string;
 }
 
 export interface IListTv {
@@ -125,6 +127,8 @@ export interface IListTv {
 	name: string;
 	vote_average: number;
 	vote_count: number;
+	media_type?: string;
+	original_name?: string;
 }
 
 export interface IContentFromMovie {

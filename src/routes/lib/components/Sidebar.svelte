@@ -44,9 +44,9 @@
 	{#each listMenu as menu}
 		<a href={menu.link} class="flex flex-col items-center decoration-none text-white p-3">
 			<div
-				class="text-white text-3xl {menu.link === $page.url.pathname
+				class=" text-3xl {menu.link === $page.url.pathname
 					? `${menu.iconActive} text-primary`
-					: menu.icon}"
+					: `${menu.icon} text-white`}"
 			/>
 			<div class="text-xs {menu.link === $page.url.pathname ? `text-primary` : 'text-gray-3'}">
 				{menu.label}
