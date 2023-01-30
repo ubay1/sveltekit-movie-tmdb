@@ -30,7 +30,7 @@
 				case 'success':
 					// totalPages = result?.data;
 					listData = [];
-					listData.push(...result?.data?.data);
+					listData.push(...(result?.data?.data ?? []));
 
 					form.reset();
 					await invalidateAll();
