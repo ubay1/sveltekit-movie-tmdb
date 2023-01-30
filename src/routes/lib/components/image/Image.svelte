@@ -21,7 +21,7 @@
 	{alt}
 	class:loaded
 	bind:this={thisImage}
-	class="h-full w-full {classes}"
+	class="h-full w-full pointer-events-none {classes}"
 />
 
 <style scoped>

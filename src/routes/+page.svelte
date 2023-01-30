@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Suspense } from '@svelte-drama/suspense';
 	import BannerHome from 'lib/components/home/BannerHome.svelte';
 	import ListMovie from 'lib/components/home/ListMovie.svelte';
 	import type { IDetailMovie, IListMovie, IListTv } from 'lib/types/movie';

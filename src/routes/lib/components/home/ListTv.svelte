@@ -2,27 +2,14 @@
 	import type { IListTv } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
 	import StarRating from '../StarRating.svelte';
-	import { getListTvPopular } from '../../apis/movie';
-	import LoadingListMovie from './LoadingListMovie.svelte';
 
 	export let title: string;
 	export let content: IListTv[] | any = [];
-
-	// let isLoading: boolean = true;
-
-	// $: movie = getListTvPopular();
-	// setTimeout(() => {
-	// 	isLoading = false;
-	// 	content = $movie?.data;
-	// }, 1000);
 </script>
 
 <div class="px-10 mt-6 mb-10 lt-md:px-6">
 	<div class="text-white text-2xl mb-4">{title}</div>
 	<div class="flex gap-4 overflow-x-auto pb-6">
-		<!-- {#if isLoading}
-			<LoadingListMovie />
-		{:else} -->
 		<div class="flex gap-4 overflow-x-auto pb-6">
 			{#each content as item}
 				<div data-sveltekit-preload-code class="flex flex-col">
@@ -45,7 +32,6 @@
 				</div>
 			{/each}
 		</div>
-		<!-- {/if} -->
 	</div>
 </div>
 

@@ -7,8 +7,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		}&language=en-US&append_to_response=videos,images,credits,external_ids,release_dates&include_image_language=en`;
 		const url = `${import.meta.env.VITE_SECRET_API_URL}/movie/${params.id}?${paramApi}`;
 		const resposeDetailMovie = await fetch(url);
-		const jsonDetailMovie = resposeDetailMovie.json();
-		// console.log('detail = ', jsonDetailMovie);
+		const jsonDetailMovie = await resposeDetailMovie.json();
 
 		return jsonDetailMovie;
 	} catch (error) {

@@ -1,25 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { getDetailMovie } from '../../apis/movie';
 	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { IDetailMovie } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
 	import StarRating from '../StarRating.svelte';
-	import LoadingBanner from './LoadingBanner.svelte';
-
-	// export let idMovie: number;
 
 	export let content: IDetailMovie;
 
 	export let type: string = 'movies';
-
-	// let isLoading: boolean = true;
-
-	// $: movie = getDetailMovie(idMovie);
-	// setTimeout(() => {
-	// 	isLoading = false;
-	// 	content = $movie?.data;
-	// }, 1000);
 </script>
 
 <svelte:head>
@@ -69,14 +56,4 @@
 			</div>
 		</a>
 	</div>
-	<!-- {#if isLoading}
-		<div class="gap-4 overflow-x-auto">
-			<div class="h-400px flex justify-center items-center relative">
-				<div class="shimmer-image" />
-			</div>
-		</div>
-	{:else} -->
-	<!-- {#each content as item} -->
-	<!-- {/each} -->
-	<!-- {/if} -->
 </div>

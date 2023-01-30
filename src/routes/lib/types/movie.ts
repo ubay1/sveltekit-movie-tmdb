@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface ICast {
 	adult: boolean;
 	cast_id: number;
@@ -52,8 +53,19 @@ export interface IDetailMovie {
 		cast: ICast[];
 		crew: ICrew[];
 	};
-	images: string[];
-	videos: string[];
+	images: {
+		posters: any[];
+		backdrops: any[];
+		logos: any[];
+	};
+	videos: {
+		results: [
+			{
+				site: string;
+				key: string;
+			}
+		];
+	};
 }
 
 export interface IDetailTv {

@@ -1,29 +1,30 @@
 <script lang="ts">
-	import { getDetailMovie } from '../../apis/movie';
 	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { IDetailMovie } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
+	import CustomModal from '../modal/CustomModal.svelte';
 	import StarRating from '../StarRating.svelte';
 
-	// export let id: number;
 	export let content: IDetailMovie;
-	// console.log(content);
+	let showModal: boolean = false;
+	let keyEmbedYoutube: string = '';
+	let keyEmbedVimeo: string = '';
 
-	// let isLoading: boolean = true;
+	function closeModal(event: any) {
+		showModal = false;
+		keyEmbedVimeo = '';
+		keyEmbedYoutube = '';
+	}
 
-	let activeTab: number = 1;
-	const listTabDetail = [
-		{ tab: 1, label: 'OVERVIEW' },
-		{ tab: 2, label: 'VIDEOS' },
-		{ tab: 3, label: 'PHOTOS' }
-	];
-
-	// $: movie = getDetailMovie(id);
-	// setTimeout(() => {
-	// 	isLoading = false;
-	// 	content = $movie?.data;
-	// 	console.log(content);
-	// }, 1000);
+	function showTrailer() {
+		showModal = true;
+		keyEmbedYoutube =
+			content.videos.results[0].site.toLowerCase() === 'youtube'
+				? content.videos.results[0].key
+				: '';
+		keyEmbedVimeo =
+			content.videos.results[0].site.toLowerCase() === 'vimeo' ? content.videos.results[0].key : '';
+	}
 </script>
 
 <svelte:head>
@@ -70,7 +71,8 @@
 				</div>
 
 				<button
-					class="cursor-pointer btn text-primary border-primary border-1 w-1/2 mt-8 lt-lg:hidden p-4 flex items-center justify-center gap-2 hover:bg-primary hover:text-white"
+					class="cursor-pointer btn text-primary border-primary border-1 w-1/2 mt-8  p-4 flex items-center justify-center gap-2 hover:bg-primary hover:text-white lt-lg:mt-4 lt-lg:w-full"
+					on:click={showTrailer}
 				>
 					<div class="i-ph-play" />
 					<div>Watch Trailer</div>
@@ -78,29 +80,23 @@
 			</div>
 		</div>
 	</div>
-	<!-- {#if isLoading}
-		<div class="gap-4 overflow-x-auto">
-			<div class="h-400px flex justify-center items-center relative">
-				<div class="shimmer-image" />
-			</div>
-		</div>
-	{:else} -->
-	<!-- {#each content as item} -->
-	<!-- {/each} -->
-	<!-- {/if} -->
 </div>
 
-<div class="flex justify-center gap-10 mt-10 lt-lg:mt-0 lt-lg:grid lt-lg:grid-cols-3 lt-lg:gap-0">
-	{#each listTabDetail as tab}
-		<button
-			on:click={() => (activeTab = tab.tab)}
-			class="btn text-xl px-0 py-1 font-bold cursor-pointer lt-lg:p-4 lt-lg:text-sm lt-lg:font-light 
-			{activeTab === tab.tab
-				? 'border-b border-white font-semibold lt-lg:bg-gray-8 lt-lg:border-none'
-				: 'text-gray-7 font-light lt-lg:bg-gray-9'}
-			"
-		>
-			{tab.label}
-		</button>
-	{/each}
-</div>
+{#if showModal}
+	<CustomModal on:close={closeModal}>
+		{#if keyEmbedYoutube !== ''}
+			<iframe
+				title="iframe video from youtube"
+				height="400"
+				class="w-full h-full"
+				src={import.meta.env.VITE_SECRET_VIDEO_YOUTUBE + keyEmbedYoutube}
+			/>
+		{:else if keyEmbedVimeo !== ''}
+			<iframe
+				title="iframe video from vimeo"
+				class="w-full h-full"
+				src={import.meta.env.VITE_SECRET_VIDEO_VIMEO + keyEmbedVimeo}
+			/>
+		{/if}
+	</CustomModal>
+{/if}
