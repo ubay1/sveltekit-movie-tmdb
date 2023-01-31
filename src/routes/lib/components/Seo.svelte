@@ -5,7 +5,7 @@
 	export let metadescription = 'Sveltekit Movies';
 	export let title = 'Sveltekit Movies';
 	export let image = {
-		url: '/icon.webp',
+		url: '/img-meta.png',
 		alt: 'sveltekit movies'
 	};
 	export let url = $page.url.href;
