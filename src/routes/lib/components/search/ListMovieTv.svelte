@@ -6,15 +6,15 @@
 	export let content: IListMovie[] & IListTv[] = [];
 </script>
 
-<div class="px-10 mt-6 mb-10 lt-md:px-6">
-	<div class="grid xxs:grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
+<div class="px-4 mt-6 mb-10 lt-xs:px-0">
+	<div class="grid xxs:grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lt-xs:px-4">
 		{#each content as item}
-			<div data-sveltekit-preload-code class="mb-6">
+			<div data-sveltekit-preload-code class="mb-6 bg-gray-9 p-2 rounded-md">
 				<a
 					href="/{item.media_type === 'movie' ? 'movies' : 'tv'}/{item.id}"
 					class="text-white decoration-none"
 				>
-					<div class=" w-full h-370px bg-gray-8 p-1 rounded-md lt-xs:h-250px lt-md:h-300px">
+					<div class="w-full h-370px rounded-md lt-xs:h-250px lt-md:h-300px">
 						<ImageLoader
 							src={`${
 								item.poster_path
@@ -22,10 +22,10 @@
 									: ''
 							}`}
 							alt="poster-{item.id}"
-							classes="object-cover rounded-md"
+							classes="object-cover rounded-t-md"
 						/>
 					</div>
-					<div class="mt-2">
+					<div class="p-2">
 						<div class="text-base font-light line-clamp-1">
 							{item.media_type === 'tv' ? item?.original_name ?? '-' : item?.original_title ?? '-'}
 						</div>

@@ -1,56 +1,52 @@
 <script lang="ts">
-	import { enhance, type SubmitFunction } from '$app/forms';
+	// import { enhance, type SubmitFunction } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
 	import ListMovieTv from 'lib/components/search/ListMovieTv.svelte';
 	import type { IListMovie, IListTv } from 'lib/types/movie';
 	import { browser } from '$app/environment';
-	// import type { ActionData, PageData } from './$types';
-	// export let form: ActionData;
+	import type { ActionData, PageData } from './$types';
+	export let form: ActionData;
 	// export let data: PageData;
-	// console.log(form);
+	console.log(form);
 	let isLoading: boolean = false;
 	let curr_page: number = 1;
 	let search: string = '';
-	let listData: IListMovie[] & IListTv[] = [];
-	let totalPages: number = 0;
+	let listData: IListMovie[] & IListTv[] = form?.data ?? [];
+	let totalPages: number = form?.total_pages ?? 0;
 
-	const submitSearchMovieTv: SubmitFunction = ({ form, data, action, cancel }) => {
-		const { search } = Object.fromEntries(data);
-		isLoading = true;
+	// const submitSearchMovieTv: SubmitFunction = ({ form, data, action, cancel }) => {
+	// 	const { search } = Object.fromEntries(data);
+	// 	isLoading = true;
 
-		if (search.length < 1) {
-			alert('form cannot be blank!');
-			isLoading = false;
-			cancel();
-		}
+	// 	if (search.length < 1) {
+	// 		alert('form cannot be blank!');
+	// 		isLoading = false;
+	// 		cancel();
+	// 	}
 
-		return async ({ result, update }) => {
-			isLoading = false;
-			switch (result.type) {
-				case 'success':
-					// totalPages = result?.data;
-					listData = [];
-					listData.push(...(result?.data?.data ?? []));
+	// 	return async ({ result, update }) => {
+	// 		isLoading = false;
+	// 		switch (result.type) {
+	// 			case 'success':
+	// 				// totalPages = result?.data;
+	// 				listData = [];
+	// 				listData.push(...(result?.data?.data ?? []));
 
-					form.reset();
-					await invalidateAll();
-					break;
-				case 'failure':
-					break;
-				default:
-					break;
-			}
-			await update();
-		};
-	};
+	// 				form.reset();
+	// 				await invalidateAll();
+	// 				break;
+	// 			case 'failure':
+	// 				break;
+	// 			default:
+	// 				break;
+	// 		}
+	// 		await update();
+	// 	};
+	// };
 </script>
 
-<form
-	action="?/search"
-	method="POST"
-	use:enhance={submitSearchMovieTv}
-	class="flex justify-center items-center w-full"
->
+<form action="?/search" method="POST" class="flex justify-center items-center w-full">
+	<!-- use:enhance={submitSearchMovieTv} -->
 	<input type="hidden" name="curr_page" value={curr_page} />
 	<input
 		type="text"
@@ -75,7 +71,7 @@
 		Movie/TV Not Found
 	</div>
 {:else}
-	<div class="flex flex-col justify-center items-center mb-30">
+	<div class="mb-30">
 		<ListMovieTv content={listData} />
 		<!-- <form
 			action="?/search"
