@@ -1,8 +1,8 @@
 <script lang="ts">
-	import BannerHome from 'lib/components/home/BannerHome.svelte';
-	import ListMovie from 'lib/components/home/ListMovie.svelte';
-	import type { IDetailMovie, IListMovie, IListTv } from 'lib/types/movie';
-	import ListTv from './lib/components/home/ListTv.svelte';
+	import BannerHome from '$lib/components/home/BannerHome.svelte';
+	import ListMovie from '$lib/components/home/ListMovie.svelte';
+	import type { IDetailMovie, IListMovie, IListTv } from '$lib/types/movie';
+	import ListTv from '$lib/components/home/ListTv.svelte';
 
 	export let data: {
 		banner: IDetailMovie;

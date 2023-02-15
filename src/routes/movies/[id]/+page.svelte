@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Detail from 'lib/components/detail/Detail.svelte';
-	import Overview from 'lib/components/detail/Overview.svelte';
-	import Photos from 'lib/components/detail/Photos.svelte';
-	import Videos from 'lib/components/detail/Videos.svelte';
-	import type { IDetailMovie } from 'lib/types/movie';
+	import Detail from '$lib/components/detail/Detail.svelte';
+	import Overview from '$lib/components/detail/Overview.svelte';
+	import Photos from '$lib/components/detail/Photos.svelte';
+	import Videos from '$lib/components/detail/Videos.svelte';
+	import type { IDetailMovie } from '$lib/types/movie';
 
 	export let data: IDetailMovie;
 

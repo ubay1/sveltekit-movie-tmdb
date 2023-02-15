@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
-	import type { IDetailMovie } from '../../types/movie';
+	import { formatNumber, toHoursAndMinutes } from '$lib/helpers/format';
+	import type { IDetailMovie } from '$lib/types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
 	import StarRating from '../StarRating.svelte';
 

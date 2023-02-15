@@ -1,13 +1,13 @@
 <script lang="ts">
 	// import { enhance, type SubmitFunction } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
-	import ListMovieTv from 'lib/components/search/ListMovieTv.svelte';
-	import type { IListMovie, IListTv } from 'lib/types/movie';
+	import ListMovieTv from '$lib/components/search/ListMovieTv.svelte';
+	import type { IListMovie, IListTv } from '$lib/types/movie';
 	import { browser } from '$app/environment';
 	import type { ActionData, PageData } from './$types';
 	export let form: ActionData;
 	// export let data: PageData;
-	console.log(form);
+	// console.log(form);
 	let isLoading: boolean = false;
 	let curr_page: number = 1;
 	let search: string = '';

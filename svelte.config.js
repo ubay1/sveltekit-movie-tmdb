@@ -6,10 +6,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter(),
-		alias: {
-			'lib/*': './src/routes/lib/*'
-		}
+		adapter: adapter()
+		// alias: {
+		// 	'lib/*': './src/routes/lib/*'
+		// }
 	}
 };
 

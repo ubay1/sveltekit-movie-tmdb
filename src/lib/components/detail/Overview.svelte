@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { formatDate, formatNumber, toHoursAndMinutes } from 'lib/helpers/format';
-	import type { IDetailMovie } from 'lib/types/movie';
+	import { formatDate, formatNumber, toHoursAndMinutes } from '../../helpers/format';
+	import type { IDetailMovie } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
 
 	// export let isLoading: boolean = false;
