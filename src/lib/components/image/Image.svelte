@@ -23,5 +23,4 @@
 	bind:this={thisImage}
 	class:loaded
 	class="h-full w-full pointer-events-none {classes}"
-	style:--tag="img-{transitionName}"
 />

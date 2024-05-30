@@ -1,4 +1,4 @@
-import type { Actions } from '../$types';
+import type { Actions } from './$types';
 
 export const actions: Actions = {
 	search: async ({ request }) => {
