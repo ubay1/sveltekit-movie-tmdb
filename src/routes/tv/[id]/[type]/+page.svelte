@@ -1,11 +1,18 @@
 <script lang="ts">
-	import Detail from '$lib/components/detail/Detail.svelte';
-	import Overview from '$lib/components/detail/Overview.svelte';
+	import Detail from '$lib/components/detail/DetailBanner.svelte';
+	import DetailMovieTv from '$lib/components/detail/DetailMovieTv.svelte';
 	import Photos from '$lib/components/detail/Photos.svelte';
 	import Videos from '$lib/components/detail/Videos.svelte';
 	import type { IDetailMovie } from '$lib/types/movie';
+	import { createQuery } from '@tanstack/svelte-query';
 
 	export let data: IDetailMovie;
+
+	const query = createQuery({
+		queryKey: ['detail-tv'],
+		// queryFn: getPosts,
+		initialData: data
+	});
 
 	let activeTab: number = 1;
 	const listTabDetail = [
@@ -13,8 +20,6 @@
 		{ tab: 2, label: 'VIDEOS' },
 		{ tab: 3, label: 'PHOTOS' }
 	];
-
-	// console.log(data);
 </script>
 
 <!-- CSR -->
@@ -40,7 +45,7 @@
 	</div>
 
 	{#if activeTab === 1}
-		<Overview content={data} />
+		<DetailMovieTv content={data} />
 	{:else if activeTab === 2}
 		<Videos content={data} />
 	{:else}

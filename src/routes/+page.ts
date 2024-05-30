@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const load: PageLoad = async () => {
 	try {
 		const params = `api_key=${
 			import.meta.env.VITE_SECRET_API_KEY_V3
@@ -15,7 +15,9 @@ export const load: PageServerLoad = async () => {
 		const jsonListMovie: { page: string; results: any } = await resposeListMovie.json();
 		const jsonListTv: { page: string; results: any } = await resposeListTv.json();
 
-		let jsonDetailMovie = [];
+		let finalBanner = [];
+		const finalMovie: any[] = [];
+		const finalTv: any[] = [];
 
 		if (jsonListMovie) {
 			const urlBannerPopular = `${import.meta.env.VITE_SECRET_API_URL}/movie/${
@@ -23,12 +25,21 @@ export const load: PageServerLoad = async () => {
 			}?${params}`;
 			const resposeBanner = await fetch(urlBannerPopular);
 			const data = await resposeBanner.json();
-			jsonDetailMovie = data;
+			finalBanner = data;
+			finalBanner.id_movie = `id-home-banner-${finalBanner.id}`;
+			jsonListMovie.results.forEach((movie: any) => {
+				movie.id_movie = `id-home-movie-${movie.id}`;
+				finalMovie.push(movie);
+			});
+			jsonListTv.results.forEach((tv: any) => {
+				tv.id_movie = `id-home-tv-${tv.id}`;
+				finalTv.push(tv);
+			});
 		}
 		return {
-			banner: jsonDetailMovie,
-			list_movie_popular: jsonListMovie.results,
-			list_tv_popular: jsonListTv.results
+			banner: finalBanner,
+			list_movie_popular: finalMovie,
+			list_tv_popular: finalTv
 		};
 	} catch (error) {
 		console.log(error);

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { formatDate, formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { IDetailMovie } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
@@ -28,6 +29,7 @@
 					width="200"
 					height="300"
 					class="object-cover pointer-events-none bg-gray-8 lg:h-full lt-lg:object-top"
+					style:--tag={content.id_movie}
 				/>
 			</div>
 			<div class="flex flex-col gap-2 font-light">
@@ -83,7 +85,7 @@
 							<ImageLoader
 								src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w300/${cast.profile_path}`}
 								alt="poster-{content.id}"
-								classes="object-cover"
+								classes="object-cover img"
 							/>
 						{:else}
 							<div class="flex justify-center items-center h-full">Not Found</div>
@@ -98,5 +100,3 @@
 	<!-- {/each}
 	{/if} -->
 </div>
-
-<style></style>

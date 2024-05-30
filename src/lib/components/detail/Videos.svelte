@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type { IDetailMovie } from 'lib/types/movie';
-	import ImageLoader from '../image/ImageLoader.svelte';
+	import type { IDetailMovie } from '$lib/types/movie';
 
 	export let content: IDetailMovie;
 </script>

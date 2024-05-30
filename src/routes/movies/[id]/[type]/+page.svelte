@@ -1,11 +1,20 @@
 <script lang="ts">
-	import Detail from '$lib/components/detail/Detail.svelte';
-	import Overview from '$lib/components/detail/Overview.svelte';
+	import DetailBanner from '$lib/components/detail/DetailBanner.svelte';
+	import DetailMovieTv from '$lib/components/detail/DetailMovieTv.svelte';
 	import Photos from '$lib/components/detail/Photos.svelte';
 	import Videos from '$lib/components/detail/Videos.svelte';
 	import type { IDetailMovie } from '$lib/types/movie';
+	import { createQuery } from '@tanstack/svelte-query';
+	// import type { PageData } from './$types';
 
+	// export let data: IDetailMovie;
 	export let data: IDetailMovie;
+
+	const query = createQuery({
+		queryKey: ['detail-movie'],
+		// queryFn: getPosts,
+		initialData: data
+	});
 
 	let activeTab: number = 1;
 	const listTabDetail = [
@@ -13,6 +22,8 @@
 		{ tab: 2, label: 'VIDEOS' },
 		{ tab: 3, label: 'PHOTOS' }
 	];
+
+	// console.log(data);
 </script>
 
 <!-- CSR -->
@@ -21,7 +32,7 @@
 </Suspense> -->
 
 <div class="lt-lg:mb-20">
-	<Detail content={data} />
+	<DetailBanner content={data} />
 	<div class="flex justify-center gap-10 mt-10 lt-lg:mt-0 lt-lg:grid lt-lg:grid-cols-3 lt-lg:gap-0">
 		{#each listTabDetail as tab}
 			<button
@@ -38,12 +49,10 @@
 	</div>
 
 	{#if activeTab === 1}
-		<Overview content={data} />
+		<DetailMovieTv content={data} />
 	{:else if activeTab === 2}
 		<Videos content={data} />
 	{:else}
 		<Photos content={data} />
 	{/if}
 </div>
-
-<style></style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { formatNumber, toHoursAndMinutes } from '../../helpers/format';
 	import type { IDetailMovie } from '../../types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
@@ -40,11 +41,19 @@
 	<div class="relative bg-[#111111] h-400px">
 		<div class="absolute top-0 right-0 lt-lg:left-0 lt-lg:top-0 lg:bottom-0 lg:left-1/3 bg-gray-9">
 			<div class=" w-full h-400px lt-lg:h-300px">
-				<ImageLoader
+				<!-- <ImageLoader
 					src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/${content.backdrop_path}`}
 					alt="img-banner"
 					classes="object-cover lt-lg:object-top border-none rounded-none"
+				/> -->
+				<img
+					width="250"
+					height="350"
+					src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w780/${content.backdrop_path}`}
+					alt="img-banner-{content.id}"
+					class="h-full w-full pointer-events-none object-cover lt-lg:object-top border-none rounded-none"
 				/>
+				<!-- style:--tag={content.id_movie} -->
 			</div>
 		</div>
 		<div

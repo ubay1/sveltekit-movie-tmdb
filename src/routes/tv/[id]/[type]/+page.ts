@@ -1,6 +1,6 @@
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params }) => {
 	try {
 		const paramApi = `api_key=${
 			import.meta.env.VITE_SECRET_API_KEY_V3
@@ -13,6 +13,7 @@ export const load: PageServerLoad = async ({ params }) => {
 			backdrop_path: resFinal.backdrop_path,
 			poster_path: resFinal.poster_path,
 			id: resFinal.id,
+			id_movie: `id-${params.type}-tv-${resFinal.id}`,
 			overview: resFinal.overview,
 			popularity: resFinal.popularity,
 			release_date: resFinal.first_air_date,

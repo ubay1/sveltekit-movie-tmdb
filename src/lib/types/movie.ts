@@ -31,6 +31,7 @@ export interface IDetailMovie {
 	backdrop_path: string;
 	poster_path?: string;
 	id: number;
+	id_movie: string;
 	overview: string;
 	popularity: number;
 	release_date: string;

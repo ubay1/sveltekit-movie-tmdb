@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IDetailMovie } from 'lib/types/movie';
+	import type { IDetailMovie } from '$lib/types/movie';
 	import ImageLoader from '../image/ImageLoader.svelte';
 
 	export let content: IDetailMovie;
@@ -16,6 +16,7 @@
 							src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w300/${image.file_path}`}
 							alt="poster-{content.id}"
 							classes="object-cover"
+							transitionName="img-{content.id}"
 						/>
 					{:else}
 						<div class="flex justify-center items-center h-full">Not Found</div>
@@ -35,6 +36,7 @@
 							src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w300/${image.file_path}`}
 							alt="poster-{content.id}"
 							classes="object-cover"
+							transitionName="img-{content.id}"
 						/>
 					{:else}
 						<div class="flex justify-center items-center h-full">Not Found</div>
@@ -54,6 +56,7 @@
 							src={`${import.meta.env.VITE_PUBLIC_IMAGE_URL}w300/${image.file_path}`}
 							alt="poster-{content.id}"
 							classes="object-cover"
+							transitionName="img-{content.id}"
 						/>
 					{:else}
 						<div class="flex justify-center items-center h-full">Not Found</div>

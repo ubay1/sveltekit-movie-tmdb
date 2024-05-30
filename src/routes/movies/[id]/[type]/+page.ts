@@ -1,6 +1,6 @@
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params }) => {
 	try {
 		const paramApi = `api_key=${
 			import.meta.env.VITE_SECRET_API_KEY_V3
@@ -8,6 +8,9 @@ export const load: PageServerLoad = async ({ params }) => {
 		const url = `${import.meta.env.VITE_SECRET_API_URL}/movie/${params.id}?${paramApi}`;
 		const resposeDetailMovie = await fetch(url);
 		const jsonDetailMovie = await resposeDetailMovie.json();
+		jsonDetailMovie.id_movie = `id-${params.type}-movie-${jsonDetailMovie.id}`;
+
+		// console.log('jsonDetailMovie = ', jsonDetailMovie);
 
 		return jsonDetailMovie;
 	} catch (error) {

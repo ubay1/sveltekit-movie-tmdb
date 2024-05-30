@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: PageLoad = async () => {
 	try {
 		const params = `api_key=${
 			import.meta.env.VITE_SECRET_API_KEY_V3
@@ -27,7 +27,11 @@ export const load: PageServerLoad = async () => {
 		const jsonListMovieNowPlaying: { page: string; results: any } =
 			await resposeListMovieNowPlaying.json();
 
-		let jsonDetailMovie = [];
+		let finalBanner = [];
+		const finalMoviePopular: any[] = [];
+		const finalMovieTopRated: any[] = [];
+		const finalMovieUpComing: any[] = [];
+		const finalMovieNowPlaying: any[] = [];
 
 		if (jsonListMoviePopular) {
 			const urlBannerPopular = `${import.meta.env.VITE_SECRET_API_URL}/movie/${
@@ -35,14 +39,31 @@ export const load: PageServerLoad = async () => {
 			}?${params}`;
 			const resposeBanner = await fetch(urlBannerPopular);
 			const data = await resposeBanner.json();
-			jsonDetailMovie = data;
+			finalBanner = data;
+			finalBanner.id_movie = `id-movie-banner-${finalBanner.id}`;
+			jsonListMoviePopular.results.forEach((movie: any) => {
+				movie.id_movie = `id-popular-movie-${movie.id}`;
+				finalMoviePopular.push(movie);
+			});
+			jsonListMovieTopRated.results.forEach((movie: any) => {
+				movie.id_movie = `id-toprated-movie-${movie.id}`;
+				finalMovieTopRated.push(movie);
+			});
+			jsonListMovieUpComing.results.forEach((movie: any) => {
+				movie.id_movie = `id-upcoming-movie-${movie.id}`;
+				finalMovieUpComing.push(movie);
+			});
+			jsonListMovieNowPlaying.results.forEach((movie: any) => {
+				movie.id_movie = `id-nowplaying-movie-${movie.id}`;
+				finalMovieNowPlaying.push(movie);
+			});
 		}
 		return {
-			banner: jsonDetailMovie,
-			list_movie_popular: jsonListMoviePopular.results,
-			list_movie_top_rated: jsonListMovieTopRated.results,
-			list_movie_upcoming: jsonListMovieUpComing.results,
-			list_movie_now_playing: jsonListMovieNowPlaying.results
+			banner: finalBanner,
+			list_movie_popular: finalMoviePopular,
+			list_movie_top_rated: finalMovieTopRated,
+			list_movie_upcoming: finalMovieUpComing,
+			list_movie_now_playing: finalMovieNowPlaying
 		};
 	} catch (error) {
 		console.log(error);

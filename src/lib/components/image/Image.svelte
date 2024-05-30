@@ -4,6 +4,7 @@
 	export let src: string;
 	export let alt: string;
 	export let classes: string;
+	export let transitionName: string;
 	let loaded = false;
 	let thisImage: any;
 
@@ -19,17 +20,8 @@
 	height="350"
 	{src}
 	{alt}
-	class:loaded
 	bind:this={thisImage}
+	class:loaded
 	class="h-full w-full pointer-events-none {classes}"
+	style:--tag="img-{transitionName}"
 />
-
-<style scoped>
-	img {
-		opacity: 0;
-		transition: opacity 1s ease-in-out;
-	}
-	img.loaded {
-		opacity: 1;
-	}
-</style>
